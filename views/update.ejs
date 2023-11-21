@@ -1,0 +1,57 @@
+<form method="post" action="/editRecord" enctype="multipart/form-data">
+    <input type="hidden" name="editId" value="<%= oldSt.id %>">
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="name" value="<%= oldSt.name %>"></td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td><input type="text" name="age" value="<%= oldSt.age %>"></td>
+        </tr>
+        <tr>
+            <td>Select Gender</td>
+            <td>
+                <input type="radio" name="gender" value="male" <% if(oldSt.gender=='male'){%><%= 'checked' %> <% }%>  >Male
+                <input type="radio" name="gender" value="female" <% if(oldSt.gender=='female'){%><%= 'checked' %> <% }%>>Female
+            </td>
+        </tr>
+        <tr>
+            <td>Select Hobby</td>
+            <td>
+                <input type="checkbox" name="hobby" value="Reading" <% if(oldSt.hobby.includes('Reading')){%><%= 'checked' %> <% }%>>Reading
+                <input type="checkbox" name="hobby" value="Riding" <% if(oldSt.hobby.includes('Riding')){%><%= 'checked' %> <% }%>>Riding
+                <input type="checkbox" name="hobby" value="Swamming" <% if(oldSt.hobby.includes('Swamming')){%><%= 'checked' %> <% }%>>Swamming
+            </td>
+        </tr>
+        <% var city = ["Surat","Vadodara","Rajkot","Ambroli","Navsari"] %>
+        <tr>
+            <td>Select City</td>
+            <td>
+                <select name="city">
+                    <option value="">--Select City--</option>
+                    <% city.map((v)=> { %> 
+                        <option value="<%= v%>" <% if(v==oldSt.city){ %> <%= 'selected' %> <%}%> ><%= v%></option>    
+                    <% }) %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Message</td>
+            <td>
+                <textarea name="message"><%= oldSt.message %></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td>
+                <input type="file" name="adminImg">
+                <img src="<%= oldSt.AdminImages %>" height="100">
+            </td>
+        </tr>
+        <tr>
+            <td><a href="/view_details">View Page</a></td>
+            <td><input type="submit" name="submit" value="Edit Record"></td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,53 @@
+<form method="post" action="/insertRecord" enctype="multipart/form-data">
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td><input type="text" name="age"></td>
+        </tr>
+        <tr>
+            <td>Select Gender</td>
+            <td>
+                <input type="radio" name="gender" value="male">Male
+                <input type="radio" name="gender" value="female">Female
+            </td>
+        </tr>
+        <tr>
+            <td>Select Hobby</td>
+            <td>
+                <input type="checkbox" name="hobby" value="Reading">Reading
+                <input type="checkbox" name="hobby" value="Riding">Riding
+                <input type="checkbox" name="hobby" value="Swamming">Swamming
+            </td>
+        </tr>
+        <% var city = ["Surat","Vadodara","Rajkot","Ambroli","Navsari"] %>
+        <tr>
+            <td>Select City</td>
+            <td>
+                <select name="city">
+                    <option value="">--Select City--</option>
+                    <% city.map((v)=> { %> 
+                        <option value="<%= v%>"><%= v%></option>    
+                    <% }) %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Message</td>
+            <td>
+                <textarea name="message"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td><input type="file" name="adminImg"></td>
+        </tr>
+        <tr>
+            <td><a href="/view_details">View Page</a></td>
+            <td><input type="submit" name="submit" value="Add Record"></td>
+        </tr>
+    </table>
+</form>
